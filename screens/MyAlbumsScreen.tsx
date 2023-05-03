@@ -16,7 +16,7 @@ export default function MyAlbumsScreen({}: Props) {
     queryKey: ["albums"],
     queryFn: getAlbums,
   });
-  console.log(albums);
+
   return (
     <View style={styles.container}>
       {/* <Text style={styles.heading}>Albumania</Text> */}
@@ -29,8 +29,8 @@ export default function MyAlbumsScreen({}: Props) {
         <Text>Loading...</Text>
       ) : (
         <View style={styles.albumCardContainer}>
-          {albums?.map((album: SpotifyApi.AlbumObjectSimplified) => (
-            <AlbumCard album={album} />
+          {albums?.map((album, index) => (
+            <AlbumCard album={album} key={`album-${index}`} />
           ))}
         </View>
       )}
@@ -41,17 +41,18 @@ export default function MyAlbumsScreen({}: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // width: "100%",
     backgroundColor: "#065f46",
     alignItems: "center",
     paddingTop: 52,
   },
   albumCardContainer: {
     flex: 1,
-    gap: 16
+    gap: 16,
   },
   heading: {
     fontSize: 32,
     fontWeight: "bold",
-    marginBottom: 16
+    marginBottom: 16,
   },
 });

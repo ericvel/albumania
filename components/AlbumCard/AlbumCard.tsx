@@ -13,8 +13,8 @@ const ArtistText = ({
   artists: SpotifyApi.ArtistObjectSimplified[];
 }) => (
   <Text>
-    {artists.map((artist) => (
-      <>{artist.name}</>
+    {artists.map((artist, index) => (
+      <React.Fragment key={`artist-${index}`}>{artist.name}</React.Fragment>
     ))}
   </Text>
 );
@@ -39,8 +39,8 @@ function AlbumCard({ album }: Props) {
 const styles = StyleSheet.create({
   albumCard: {
     flexDirection: "row",
-    verticalAlign: "middle",
-    width: 400,
+    // flex: 1,
+    width: "100%",
     borderWidth: 2,
     borderStyle: "solid",
     borderColor: "#fff",
